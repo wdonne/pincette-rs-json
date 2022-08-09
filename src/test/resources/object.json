@@ -1,0 +1,27 @@
+{
+  "_id": "bbdb2c5a-e97c-4eb3-ba13-54b09f2181d2",
+  "running": 0,
+  "_corr": "5f9a6c74-75a4-45db-a358-19974c7f4343",
+  "application": "lars-jes-activity-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-activity-unique-dev",
+    "lars-activity-tap-dev",
+    "lars-activity-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368596906,
+  "out": [
+    "log-dev",
+    "lars-activity-unique-dev",
+    "lars-activity-reply-dev",
+    "lars-activity-event-full-dev",
+    "lars-activity-event-dev",
+    "pipeline-monitor-part-dev",
+    "lars-activity-aggregate-dev",
+    "lars-activity-command-dev"
+  ]
+}

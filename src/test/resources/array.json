@@ -1,0 +1,643 @@
+[{
+  "_id": "bbdb2c5a-e97c-4eb3-ba13-54b09f2181d2",
+  "running": 0,
+  "_corr": "5f9a6c74-75a4-45db-a358-19974c7f4343",
+  "application": "lars-jes-activity-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-activity-unique-dev",
+    "lars-activity-tap-dev",
+    "lars-activity-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368596906,
+  "out": [
+    "log-dev",
+    "lars-activity-unique-dev",
+    "lars-activity-reply-dev",
+    "lars-activity-event-full-dev",
+    "lars-activity-event-dev",
+    "pipeline-monitor-part-dev",
+    "lars-activity-aggregate-dev",
+    "lars-activity-command-dev"
+  ]
+},{
+  "_id": "e54e61ff-7b4e-47ba-b148-e78b23ee9621",
+  "running": 0,
+  "_corr": "3eb274dd-810e-4207-8a90-683a20b95eae",
+  "application": "invitations-slot-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "invitations-invitation-event-full-dev",
+    "invitations-slot-command-dev",
+    "lars-student-reply-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368596001,
+  "out": [
+    "log-dev",
+    "invitations-slot-event-dev",
+    "invitations-invitation-command-dev",
+    "invitations-slot-aggregate-dev",
+    "lars-student-command-filtered-dev",
+    "invitations-slot-event-full-dev",
+    "invitations-slot-reply-dev",
+    "pipeline-monitor-part-dev",
+    "mail-dev",
+    "invitations-slot-command-dev"
+  ]
+},{
+  "_id": "2d4f8a60-a997-4785-8a1e-65535fcb330a",
+  "running": 2,
+  "_corr": "c0ffbed7-e637-4622-bfbf-77e748fab9bd",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 2,
+  "_timestamp": 1631368606943,
+  "application": "invitations-clb-dev",
+  "in": [
+    "invitations-clb-unique-dev",
+    "lars-clb-aggregate-dev",
+    "invitations-clb-command-dev"
+  ],
+  "out": [
+    "invitations-clb-unique-dev",
+    "log-dev",
+    "invitations-clb-event-dev",
+    "invitations-clb-aggregate-dev",
+    "pipeline-monitor-part-dev",
+    "invitations-clb-event-full-dev",
+    "invitations-clb-reply-dev",
+    "invitations-clb-command-dev"
+  ]
+},{
+  "_id": "ffdc0a05-fdd9-45bc-acba-11f9c5a7a08d",
+  "running": 0,
+  "_corr": "784f679a-6655-4223-a856-8a0639b92cb9",
+  "application": "lars-covid-notification-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-covid-notification-export-s3-dev",
+    "lars-ehealth-tower-notification-command-dev",
+    "lars-covid-notification-automatic-pcr-sms-dev",
+    "lars-command-dev",
+    "lars-ehealth-tower-notification-unique-dev",
+    "s3-dev",
+    "lars-ehealth-tower-notification-load-dev",
+    "lars-covid-notification-event-full-dev",
+    "mail-result-dev",
+    "lars-ehealth-tower-notification-aggregate-dev",
+    "lars-covid-notification-export-command-dev",
+    "lars-covid-notification-automatic-close-dev",
+    "lars-activity-event-full-dev",
+    "lars-covid-notification-index-students-report-command-dev",
+    "lars-student-event-full-dev",
+    "lars-activity-aggregate-dev",
+    "lars-covid-notification-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531624096,
+  "out": [
+    "log-dev",
+    "lars-covid-notification-export-s3-dev",
+    "lars-ehealth-tower-notification-command-dev",
+    "at-scheduler-command-dev",
+    "lars-covid-notification-index-students-report-event-dev",
+    "lars-ehealth-tower-notification-unique-dev",
+    "lars-ehealth-tower-notification-load-dev",
+    "lars-covid-notification-event-full-dev",
+    "lars-covid-notification-index-students-report-aggregate-dev",
+    "pipeline-monitor-part-dev",
+    "lars-covid-notification-event-dev",
+    "lars-covid-notification-aggregate-dev",
+    "lars-ehealth-tower-notification-reply-dev",
+    "lars-ehealth-tower-notification-aggregate-dev",
+    "mail-dev",
+    "lars-reply-dev",
+    "lars-covid-notification-index-students-report-event-full-dev",
+    "lars-ehealth-tower-notification-event-dev",
+    "lars-covid-notification-reply-dev",
+    "lars-ehealth-tower-notification-event-full-dev",
+    "lars-covid-notification-index-students-report-command-dev",
+    "lars-covid-command-dev",
+    "lars-covid-notification-index-students-report-reply-dev",
+    "lars-covid-notification-command-dev"
+  ]
+},{
+  "_id": "5742fa2c-cdee-43ad-900f-f99d6a6366ae",
+  "running": 0,
+  "_corr": "9e06da78-4da5-4ed1-b658-2eca87078d32",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 0,
+  "_timestamp": 1631368598143
+},{
+  "_id": "b9d3751e-26bd-4de0-ae42-40f5ecb0e12f",
+  "running": 0,
+  "_corr": "6ab7b2a8-5e91-42b4-a4f8-5fed557aaaca",
+  "application": "lars-jes-student-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-student-command-dev",
+    "lars-student-tap-dev",
+    "lars-student-unique-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531627397,
+  "out": [
+    "log-dev",
+    "lars-student-aggregate-dev",
+    "lars-student-event-dev",
+    "lars-student-event-full-dev",
+    "pipeline-monitor-part-dev",
+    "lars-student-command-dev",
+    "lars-student-unique-dev",
+    "lars-student-reply-dev"
+  ]
+},{
+  "_id": "f1e08941-ec9a-43a9-8714-ee434134b1ba",
+  "running": 0,
+  "_corr": "123f6b72-39ae-437a-b400-161ef5884ca8",
+  "application": "invitations-invitation-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-student-aggregate-dev",
+    "invitations-invitation-command-dev",
+    "invitations-invitation-unique-dev",
+    "lars-activity-aggregate-dev",
+    "mail-result-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368600633,
+  "out": [
+    "log-dev",
+    "invitations-invitation-event-dev",
+    "invitations-invitation-command-dev",
+    "invitations-invitation-reply-dev",
+    "invitations-invitation-unique-dev",
+    "invitations-invitation-aggregate-dev",
+    "pipeline-monitor-part-dev",
+    "invitations-invitation-event-full-dev",
+    "mail-dev",
+    "invitations-slot-command-dev"
+  ]
+},{
+  "_id": "a61dc20a-916d-443c-9421-f401374b3546",
+  "running": 0,
+  "_corr": "4a030e60-1454-4a4f-a246-e97997233450",
+  "application": "lars-absences-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-absences-unique-dev",
+    "lars-absences-load-dev",
+    "lars-absences-aggregate-dev",
+    "lars-absences-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368600402,
+  "out": [
+    "log-dev",
+    "lars-absences-event-dev",
+    "lars-absences-unique-dev",
+    "lars-student-command-trigger-dev",
+    "lars-absences-event-full-dev",
+    "pipeline-monitor-part-dev",
+    "lars-absences-reply-dev",
+    "lars-absences-aggregate-dev",
+    "lars-absences-command-dev"
+  ]
+},{
+  "_id": "ca164287-ba8b-4ab4-a00b-0369d9a4f4dd",
+  "running": 0,
+  "_corr": "4f8d88ff-d7bc-4b2c-8e4c-677e923355b7",
+  "application": "lars-subscription-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-student-aggregate-dev",
+    "lars-subscription-unique-dev",
+    "lars-subscription-aggregate-dev",
+    "lars-school-aggregate-dev",
+    "lars-subscription-command-dev",
+    "lars-subscription-load-dev",
+    "s3-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368601466,
+  "out": [
+    "log-dev",
+    "lars-subscription-reply-dev",
+    "lars-subscription-unique-dev",
+    "lars-subscription-aggregate-dev",
+    "lars-student-command-trigger-dev",
+    "lars-subscription-command-dev",
+    "lars-subscription-load-dev",
+    "pipeline-monitor-part-dev",
+    "lars-subscription-event-dev",
+    "lars-student-command-dev",
+    "lars-subscription-event-full-dev"
+  ]
+},{
+  "_id": "7fa4bdeb-278b-4437-a0ae-541950f57a99",
+  "running": 0,
+  "_corr": "8a90b245-45a5-4f0f-9db9-59f9571684ed",
+  "application": "lars-jes-clb-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-clb-unique-dev",
+    "lars-clb-tap-dev",
+    "lars-clb-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531622445,
+  "out": [
+    "log-dev",
+    "lars-clb-unique-dev",
+    "lars-clb-aggregate-dev",
+    "lars-clb-reply-dev",
+    "lars-clb-event-full-dev",
+    "lars-clb-command-dev",
+    "pipeline-monitor-part-dev",
+    "lars-clb-event-dev"
+  ]
+},{
+  "_id": "898fb762-89c3-459f-b1b5-6213a8a42bbb",
+  "running": 0,
+  "_corr": "cfe00836-54ca-4ee2-8991-4a19eade23ac",
+  "application": "lars-filter-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-activity-command-dev",
+    "lars-student-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531624939,
+  "out": [
+    "lars-student-command-filtered-dev",
+    "lars-activity-command-filtered-dev",
+    "pipeline-monitor-part-dev"
+  ]
+},{
+  "_id": "e421d64c-d88a-4217-b06b-82afa0f44c5d",
+  "running": 1,
+  "_corr": "4479e48e-99f6-4eb1-9718-5c4f29238caf",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368604739,
+  "application": "at-service-dev",
+  "in": [
+    "at-scheduler-command-dev",
+    "ticker-dev"
+  ],
+  "out": [
+    "log-dev",
+    "at-scheduler-reply-dev",
+    "at-scheduler-command-dev",
+    "at-scheduler-event-dev",
+    "at-scheduler-event-full-dev",
+    "at-scheduler-aggregate-dev"
+  ]
+},{
+  "_id": "f5498aa7-29dc-41dd-9355-5f07da765d5e",
+  "running": 0,
+  "_corr": "aa62fd5e-cc40-49a6-ab26-0895ad7de225",
+  "application": "lambda-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "pdf-dev",
+    "mail-ses-dev",
+    "lars-curve-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368605588
+},{
+  "_id": "14dbbc0e-0cad-4d62-9dc3-0615b994f3f5",
+  "running": 0,
+  "_corr": "ec5166f9-6d98-461a-8f71-20fe34a8ab30",
+  "application": "lars-clb-command-trigger-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-clb-command-trigger-dev",
+    "lars-clb-reply-dev",
+    "lars-clb-event-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368605848,
+  "out": [
+    "lars-clb-command-dev",
+    "pipeline-monitor-part-dev",
+    "lars-aggregate-events-command-dev"
+  ]
+},{
+  "_id": "9cd36fa0-5ef6-4c52-b48b-afdc0e61da53",
+  "running": 1,
+  "_corr": "4131a312-a67d-4272-8713-5765bb3f4421",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631368606729,
+  "application": "lars-actions-dev",
+  "in": [
+    "lars-student-aggregate-dev"
+  ],
+  "out": [
+    "pipeline-monitor-part-dev"
+  ]
+},{
+  "_id": "1c1bb292-b7a9-4768-a2f0-9972f86f3208",
+  "running": 0,
+  "_corr": "55b5a2ba-056b-41c6-9e90-1cf538d1bec0",
+  "application": "lars-lettres-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-medical-lettres-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531622996,
+  "out": [
+    "pipeline-monitor-part-dev",
+    "pdf-dev"
+  ]
+},{
+  "_id": "4ebe59d5-ac92-4e23-a5c8-478d47c260ce",
+  "running": 0,
+  "_corr": "aab77be3-252a-4e7b-874b-1646947c76bc",
+  "application": "lars-activity-command-trigger-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-activity-reply-dev",
+    "lars-activity-command-trigger-dev",
+    "lars-activity-event-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531621341,
+  "out": [
+    "pipeline-monitor-part-dev",
+    "lars-activity-command-dev",
+    "lars-aggregate-events-command-dev"
+  ]
+},{
+  "_id": "0b9ec5ad-a252-4b6e-8c8c-009879f97355",
+  "running": 0,
+  "_corr": "2682fb63-ebb5-4f92-908f-4a8a0f32e94a",
+  "application": "lars-clb-employee-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-user-event-full-dev",
+    "lars-clb-employee-command-dev",
+    "lars-clb-employee-unique-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531622060,
+  "out": [
+    "log-dev",
+    "lars-clb-employee-event-full-dev",
+    "lars-clb-employee-aggregate-dev",
+    "lars-clb-employee-reply-dev",
+    "pipeline-monitor-part-dev",
+    "lars-clb-employee-event-dev",
+    "lars-clb-employee-command-dev",
+    "lars-clb-employee-unique-dev"
+  ]
+},{
+  "_id": "63a37867-7391-452c-9d82-51d54361116c",
+  "running": 1,
+  "_corr": "7cac79dd-850e-4ed5-8ed3-bc2f18bdd3c7",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531622609,
+  "application": "lars-iris-log-dev",
+  "in": [
+    "log-dev"
+  ],
+  "out": [
+    "lars-iris-dev"
+  ]
+},{
+  "_id": "bf4fb986-3e11-459f-b0bb-ff6710dfb5a5",
+  "running": 1,
+  "_corr": "79a25acc-5835-4212-be22-6bea6ed77a14",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531623172,
+  "application": "lars-student-command-trigger-dev",
+  "in": [
+    "lars-student-command-trigger-dev",
+    "lars-student-event-dev",
+    "lars-student-reply-dev"
+  ],
+  "out": [
+    "pipeline-monitor-part-dev",
+    "lars-aggregate-events-command-dev",
+    "lars-student-command-dev"
+  ]
+},{
+  "_id": "c27004ce-ce1c-44cc-89b5-70ce0feea225",
+  "running": 1,
+  "_corr": "827d9f51-72a7-426e-810b-1e2df9aede6e",
+  "_jwt": {
+    "sub": "system"
+  },
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531626285,
+  "application": "lars-mail-ui-dev",
+  "in": [
+    "mail-result-dev"
+  ],
+  "out": [
+    "lars-reply-dev"
+  ]
+},{
+  "_id": "223346b9-1066-4ed2-85be-bf4dd7781699",
+  "running": 0,
+  "_corr": "fff7475f-dfcc-4650-9717-a41c8d563499",
+  "application": "lars-jes-school-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-school-unique-dev",
+    "lars-school-tap-dev",
+    "lars-school-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531627026,
+  "out": [
+    "log-dev",
+    "lars-school-event-dev",
+    "lars-school-unique-dev",
+    "lars-school-aggregate-dev",
+    "lars-school-reply-dev",
+    "lars-school-command-dev",
+    "pipeline-monitor-part-dev",
+    "lars-school-event-full-dev"
+  ]
+},{
+  "_id": "5875531f-00e4-4f1f-8476-40ab364a4052",
+  "running": 1,
+  "_corr": "e844dba4-74c8-4924-93fb-fc5ec218ab36",
+  "application": "lars-covid-pcr-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-covid-pcr-retry-dev",
+    "lars-covid-command-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 0,
+  "_timestamp": 1631531624643,
+  "out": [
+    "lars-reply-dev",
+    "lars-command-dev",
+    "pipeline-monitor-part-dev"
+  ]
+},{
+  "_id": "802ac52a-9db0-4091-b6fd-27c7e5526073",
+  "running": 0,
+  "_corr": "7cde14d5-02ee-4388-9fe2-685a21815e50",
+  "application": "message-lag-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "message-lag-dev",
+    "message-lag-elastic-dev",
+    "ticker-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531627801,
+  "out": [
+    "message-lag-dev",
+    "message-lag-elastic-dev"
+  ]
+},{
+  "_id": "06e4f8a0-8fc7-4d1a-8fea-af00109f7629",
+  "running": 0,
+  "_corr": "d2b9fac9-c5e4-40ff-b0e2-a7cc7255149d",
+  "application": "mail-bounce-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "mail-result-dev",
+    "mail-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531627594,
+  "out": [
+    "lars-reply-dev",
+    "pipeline-monitor-part-dev",
+    "mail-ses-dev"
+  ]
+},{
+  "_id": "047e4e83-7bbf-44c7-b9fa-9e6538bed25c",
+  "running": 0,
+  "_corr": "678ec832-36a9-4385-9696-4651b7e78052",
+  "application": "lars-user-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "lars-user-command-dev",
+    "lars-user-unique-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 1,
+  "_timestamp": 1631531627970,
+  "out": [
+    "log-dev",
+    "lars-user-event-dev",
+    "lars-user-aggregate-dev",
+    "lars-user-event-full-dev",
+    "pipeline-monitor-part-dev",
+    "lars-user-unique-dev",
+    "lars-user-reply-dev"
+  ]
+},{
+  "_id": "c67b0d0d-f5c1-4297-8afb-eac9b5e76b31",
+  "running": 1,
+  "_corr": "c2ef32b1-1048-4ce9-8495-35a6bdab2446",
+  "application": "json-streams-topologies-dev",
+  "_jwt": {
+    "sub": "system"
+  },
+  "in": [
+    "jes-topologies-command-dev",
+    "jes-topologies-unique-dev",
+    "topology-dev"
+  ],
+  "_type": "jes-topologies",
+  "_seq": 0,
+  "_timestamp": 1631531628534,
+  "out": [
+    "log-dev",
+    "jes-topologies-command-dev",
+    "jes-topologies-event-full-dev",
+    "jes-topologies-reply-dev",
+    "pipeline-monitor-part-dev",
+    "jes-topologies-unique-dev",
+    "jes-topologies-event-dev",
+    "jes-topologies-aggregate-dev"
+  ]
+}]
