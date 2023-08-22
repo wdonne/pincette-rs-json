@@ -18,7 +18,6 @@ import java.util.concurrent.Flow.Processor;
 import javax.json.JsonValue;
 import net.pincette.json.JsonUtil;
 import net.pincette.rs.Mapper;
-import net.pincette.rs.Split;
 
 /**
  * Reactive JSON utilities.
@@ -35,11 +34,7 @@ public class Util {
    * @return The reactive streams processor.
    */
   public static Processor<ByteBuffer, JsonValue> parseJson() {
-    return pipe(Split.<ByteBuffer>split())
-        .then(jsonEvents())
-        .then(one())
-        .then(buffer(1000))
-        .then(jsonValues());
+    return pipe(jsonEvents()).then(one()).then(buffer(1000)).then(jsonValues());
   }
 
   private static Processor<String, ByteBuffer> write() {

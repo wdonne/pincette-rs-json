@@ -1,6 +1,13 @@
 package net.pincette.rs.json;
 
+import static javax.json.stream.JsonParser.Event.KEY_NAME;
+import static javax.json.stream.JsonParser.Event.VALUE_FALSE;
+import static javax.json.stream.JsonParser.Event.VALUE_NULL;
+import static javax.json.stream.JsonParser.Event.VALUE_NUMBER;
+import static javax.json.stream.JsonParser.Event.VALUE_STRING;
+import static javax.json.stream.JsonParser.Event.VALUE_TRUE;
 import static net.pincette.json.JsonUtil.createValue;
+import static net.pincette.rs.Serializer.dispatch;
 import static net.pincette.util.Pair.pair;
 import static net.pincette.util.Util.tryToDo;
 import static net.pincette.util.Util.tryToGetRethrow;
@@ -8,6 +15,8 @@ import static net.pincette.util.Util.tryToGetRethrow;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.json.async.NonBlockingJsonParser;
 import java.nio.ByteBuffer;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.concurrent.Flow.Processor;
 import java.util.function.Supplier;
 import javax.json.JsonValue;
@@ -21,22 +30,23 @@ import net.pincette.util.Pair;
 /**
  * A reactive JSON parser that emits JSON events.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  */
 public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>> {
   private final NonBlockingJsonParser jackson =
       (NonBlockingJsonParser)
           tryToGetRethrow(() -> new JsonFactory().createNonBlockingByteArrayParser()).orElse(null);
   private final JsonParser parser = new JsonParserWrapper(new JacksonParser(jackson));
+  private final Queue<ByteBuffer> buffers = new LinkedList<>();
   private boolean completed;
   private long requested;
 
   private static boolean isValue(final Event event) {
-    return event == Event.VALUE_FALSE
-        || event == Event.VALUE_NULL
-        || event == Event.VALUE_NUMBER
-        || event == Event.VALUE_TRUE
-        || event == Event.VALUE_STRING;
+    return event == VALUE_FALSE
+        || event == VALUE_NULL
+        || event == VALUE_NUMBER
+        || event == VALUE_TRUE
+        || event == VALUE_STRING;
   }
 
   public static Processor<ByteBuffer, Pair<Event, JsonValue>> jsonEvents() {
@@ -51,23 +61,57 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
     return array;
   }
 
+  private boolean consumeBuffer(final ByteBuffer buffer) {
+    if (buffer.hasRemaining()) {
+      final byte[] array = array(buffer);
+
+      tryToDo(
+          () -> {
+            jackson.feedInput(array, 0, array.length);
+            emit();
+          },
+          subscriber::onError);
+
+      return buffer.hasRemaining();
+    }
+
+    return false;
+  }
+
+  private void consumeBuffers() {
+    while (!buffers.isEmpty() && jackson.needMoreInput()) {
+      if (!consumeBuffer(buffers.peek())) {
+        buffers.remove();
+      }
+    }
+  }
+
   @Override
   protected void emit(final long number) {
-    requested += number;
-    emit();
+    dispatch(
+        () -> {
+          requested += number;
+          emit();
+        });
   }
 
   private void emit() {
-    if (!jackson.needMoreInput()) {
-      Event event;
+    dispatch(
+        () -> {
+          consumeBuffers();
+          emitAvailableEvents();
+          more();
+          sendComplete();
+        });
+  }
 
-      while (requested > 0 && (event = parser.next()) != null) {
-        --requested;
-        subscriber.onNext(pair(event, value(event)));
-      }
+  private void emitAvailableEvents() {
+    Event event;
+
+    while (!jackson.needMoreInput() && requested > 0 && (event = parser.next()) != null) {
+      --requested;
+      subscriber.onNext(pair(event, value(event)));
     }
-
-    more();
   }
 
   private void more() {
@@ -78,26 +122,30 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
 
   @Override
   public void onComplete() {
-    completed = true;
-    emit();
-    subscriber.onComplete();
+    dispatch(() -> completed = true);
   }
 
   @Override
   public void onNext(final ByteBuffer buffer) {
-    final byte[] array = array(buffer);
-
-    tryToDo(
+    dispatch(
         () -> {
-          jackson.feedInput(array, 0, array.length);
+          buffers.add(buffer);
           emit();
-        },
-        subscriber::onError);
+        });
+  }
+
+  private void sendComplete() {
+    dispatch(
+        () -> {
+          if (completed && requested == 0 && !jackson.needMoreInput()) {
+            subscriber.onComplete();
+          }
+        });
   }
 
   private JsonValue value(final Event event) {
     final Supplier<JsonValue> tryKey =
-        () -> event == Event.KEY_NAME ? createValue(parser.getString()) : null;
+        () -> event == KEY_NAME ? createValue(parser.getString()) : null;
 
     return isValue(event) ? parser.getValue() : tryKey.get();
   }

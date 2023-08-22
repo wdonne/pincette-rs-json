@@ -90,9 +90,15 @@ class TestJson {
   }
 
   @Test
-  @DisplayName("array")
-  void array() {
-    testArray("/array.json");
+  @DisplayName("array1")
+  void array1() {
+    testArray("/array_1.json");
+  }
+
+  @Test
+  @DisplayName("array2")
+  void array2() {
+    testArray("/array_2.json");
   }
 
   @Test
