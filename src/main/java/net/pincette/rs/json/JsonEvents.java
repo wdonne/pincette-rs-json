@@ -86,6 +86,10 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
     }
   }
 
+  private boolean done() {
+    return completed && requested == 0 && buffers.isEmpty() && !jackson.needMoreInput();
+  }
+
   @Override
   protected void emit(final long number) {
     dispatch(
@@ -137,7 +141,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
   private void sendComplete() {
     dispatch(
         () -> {
-          if (completed && requested == 0 && !jackson.needMoreInput()) {
+          if (done()) {
             subscriber.onComplete();
           }
         });

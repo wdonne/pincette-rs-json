@@ -1,0 +1,596 @@
+{
+    "id": 40446379,
+    "selectiveActivity": false,
+    "type": "PupilActivity",
+    "activityDate": "2023-08-25T10:00:00.000Z",
+    "customClientName": false,
+    "client": "Milan Alliet",
+    "consultType": 0,
+    "homeschooling": false,
+    "onlineHelp": false,
+    "ownerResource": {
+        "id": 587,
+        "username": "d27b717456046fa5508060112339399c9be94ec2",
+        "description": "Hilde Denys"
+    },
+    "participants": [],
+    "mainActor": {
+        "name": "GEEN_ACTOR",
+        "description": "GEEN ACTOR",
+        "actorType": "BOTH"
+    },
+    "mainFunction": {
+        "id": 7,
+        "code": 7,
+        "description": "Formalisering attest/advies"
+    },
+    "mainTheme": {
+        "id": 1151,
+        "code": "2.2.3",
+        "description": "trajectbegeleiding ifv gemotiveerd verslag / verslag"
+    },
+    "clbId": "38",
+    "functions": [
+        {
+            "id": 7,
+            "code": 7,
+            "description": "Formalisering attest/advies"
+        }
+    ],
+    "themes": [
+        {
+            "id": 1151,
+            "code": "2.2.3",
+            "description": "trajectbegeleiding ifv gemotiveerd verslag / verslag"
+        }
+    ],
+    "actors": [
+        {
+            "name": "GEEN_ACTOR",
+            "description": "GEEN ACTOR",
+            "actorType": "BOTH"
+        }
+    ],
+    "pupilsInActivity": [
+        {
+            "id": 33588472,
+            "version": 0,
+            "student": {
+                "id": 1708901,
+                "nationalIdentityNumber": "09100109170",
+                "firstName": "Milan",
+                "lastName": "Alliet",
+                "nickName": "Milan",
+                "birthday": "2009-10-01",
+                "sex": "MALE",
+                "groupName": "RHIZO Hotelschool / 1ste graad / 1BHVa",
+                "archived": false,
+                "nationality": {
+                    "id": 50,
+                    "code": 150,
+                    "description": "Belgische"
+                },
+                "cmp": false,
+                "studentRelations": [
+                    {
+                        "id": 6946653,
+                        "firstName": "Liesbeth",
+                        "lastName": "Cokelaere",
+                        "telephone": "056/51 01 11 ",
+                        "mail": "liesbeth.cokelaere@police.belgium.eu",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-10-26",
+                        "relation": "sociale politie Menen",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 7020470,
+                        "firstName": "Sofie",
+                        "lastName": "De Lille",
+                        "type": "3",
+                        "actor": "20",
+                        "date": "2022-12-21",
+                        "relation": "medische dienst MFC De Kindervriend (waar zus Shakira zit)",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 6981806,
+                        "firstName": "nathalie",
+                        "lastName": "leenknecht",
+                        "gsm": "0473 81 86 83",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-11-24",
+                        "relation": "parketcriminologe Kortrijk ",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 7021909,
+                        "firstName": "greet ",
+                        "lastName": "thuylie",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-12-22",
+                        "relation": "MW MFC De Kindervriend (zusje Shakira)",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 6946644,
+                        "firstName": "Louis",
+                        "lastName": "Van Neste",
+                        "telephone": "056/82 82 60",
+                        "mail": "louis.vanneste@rhizo.be",
+                        "type": "3",
+                        "actor": "10",
+                        "date": "2022-10-26",
+                        "relation": "leefcoach",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 6946645,
+                        "firstName": "Geert ",
+                        "lastName": "Van de Kerkhove",
+                        "telephone": "056/82 82 60",
+                        "mail": "geert.vandekerkhove@rhizo.be",
+                        "type": "3",
+                        "actor": "11",
+                        "date": "2022-10-26",
+                        "relation": "directeur",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 2987138,
+                        "gsm": "0474 34 91 47",
+                        "mail": "milan.alliet@student.rhizo.be",
+                        "type": "1",
+                        "date": "2022-11-15",
+                        "relation": "Officieel",
+                        "street": "TER BEKE",
+                        "streetNumber": "76",
+                        "mailboxNumber": "",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        },
+                        "zipCode": "8930",
+                        "city": "Menen"
+                    },
+                    {
+                        "id": 6930385,
+                        "firstName": "Stefaan",
+                        "lastName": "De Geeter ",
+                        "telephone": "056/22 78 19",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-10-13",
+                        "relation": "bewindvoerder van de ouders",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 6984828,
+                        "firstName": "Valerie ",
+                        "lastName": "Vandensteen",
+                        "type": "4",
+                        "date": "2022-11-25",
+                        "relation": "consult VK",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 7018671,
+                        "firstName": "lisa ",
+                        "lastName": "weydts ",
+                        "gsm": "02 249 78 09",
+                        "mail": "lisa.weydts@jongerenwelzijn.be",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-12-20",
+                        "relation": "OCJ consulente ",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 7034119,
+                        "firstName": "Dr Ilse",
+                        "lastName": "Stragier",
+                        "telephone": "056/532575",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2023-01-11",
+                        "relation": "dermatologe",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 3183868,
+                        "firstName": "Veerle",
+                        "lastName": "Vanweehaeghe",
+                        "telephone": "0477/27.63.01",
+                        "type": "1",
+                        "relation": "Thuis"
+                    },
+                    {
+                        "id": 3233859,
+                        "firstName": "Bjorn",
+                        "lastName": "Alliet",
+                        "telephone": "0474/34 91 47 oud / 0492/085 207 nieuw",
+                        "mail": "bjorn_veerle@hotmail.com",
+                        "type": "1",
+                        "date": "2020-12-22",
+                        "relation": "Thuis",
+                        "observations": "TELEPHONE: 0479/48.68.19",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 7008070,
+                        "firstName": "Pieter",
+                        "lastName": "De Meulder",
+                        "telephone": "056/255942",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-12-13",
+                        "relation": "huisarts",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 7024878,
+                        "firstName": "arts (naam?)",
+                        "lastName": "dienst infectieziektebestrijding",
+                        "gsm": "0471673987",
+                        "type": "4",
+                        "actor": "13",
+                        "date": "2022-12-23",
+                        "relation": "arts",
+                        "country": {
+                            "id": 49,
+                            "code": "BEL",
+                            "name": "België"
+                        }
+                    },
+                    {
+                        "id": 3144064,
+                        "telephone": "056/22.01.56",
+                        "type": "1",
+                        "relation": "Thuis",
+                        "observations": "TELEPHONE: 056/22.01.56"
+                    }
+                ],
+                "isInEmployeesGroup": false
+            },
+            "annotations": [],
+            "conclusions": [],
+            "anamneses": [],
+            "startedFromDraft": false,
+            "studentOtherActors": [],
+            "medical": false,
+            "absent": false,
+            "covidIndex": false,
+            "relatedReferralRegItemIds": []
+        }
+    ],
+    "selectedPupilInActivity": {
+        "id": 33588472,
+        "version": 0,
+        "student": {
+            "id": 1708901,
+            "nationalIdentityNumber": "09100109170",
+            "firstName": "Milan",
+            "lastName": "Alliet",
+            "nickName": "Milan",
+            "birthday": "2009-10-01",
+            "sex": "MALE",
+            "groupName": "RHIZO Hotelschool / 1ste graad / 1BHVa",
+            "archived": false,
+            "nationality": {
+                "id": 50,
+                "code": 150,
+                "description": "Belgische"
+            },
+            "cmp": false,
+            "studentRelations": [
+                {
+                    "id": 6946653,
+                    "firstName": "Liesbeth",
+                    "lastName": "Cokelaere",
+                    "telephone": "056/51 01 11 ",
+                    "mail": "liesbeth.cokelaere@police.belgium.eu",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-10-26",
+                    "relation": "sociale politie Menen",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 7020470,
+                    "firstName": "Sofie",
+                    "lastName": "De Lille",
+                    "type": "3",
+                    "actor": "20",
+                    "date": "2022-12-21",
+                    "relation": "medische dienst MFC De Kindervriend (waar zus Shakira zit)",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 6981806,
+                    "firstName": "nathalie",
+                    "lastName": "leenknecht",
+                    "gsm": "0473 81 86 83",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-11-24",
+                    "relation": "parketcriminologe Kortrijk ",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 7021909,
+                    "firstName": "greet ",
+                    "lastName": "thuylie",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-12-22",
+                    "relation": "MW MFC De Kindervriend (zusje Shakira)",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 6946644,
+                    "firstName": "Louis",
+                    "lastName": "Van Neste",
+                    "telephone": "056/82 82 60",
+                    "mail": "louis.vanneste@rhizo.be",
+                    "type": "3",
+                    "actor": "10",
+                    "date": "2022-10-26",
+                    "relation": "leefcoach",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 6946645,
+                    "firstName": "Geert ",
+                    "lastName": "Van de Kerkhove",
+                    "telephone": "056/82 82 60",
+                    "mail": "geert.vandekerkhove@rhizo.be",
+                    "type": "3",
+                    "actor": "11",
+                    "date": "2022-10-26",
+                    "relation": "directeur",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 2987138,
+                    "gsm": "0474 34 91 47",
+                    "mail": "milan.alliet@student.rhizo.be",
+                    "type": "1",
+                    "date": "2022-11-15",
+                    "relation": "Officieel",
+                    "street": "TER BEKE",
+                    "streetNumber": "76",
+                    "mailboxNumber": "",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    },
+                    "zipCode": "8930",
+                    "city": "Menen"
+                },
+                {
+                    "id": 6930385,
+                    "firstName": "Stefaan",
+                    "lastName": "De Geeter ",
+                    "telephone": "056/22 78 19",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-10-13",
+                    "relation": "bewindvoerder van de ouders",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 6984828,
+                    "firstName": "Valerie ",
+                    "lastName": "Vandensteen",
+                    "type": "4",
+                    "date": "2022-11-25",
+                    "relation": "consult VK",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 7018671,
+                    "firstName": "lisa ",
+                    "lastName": "weydts ",
+                    "gsm": "02 249 78 09",
+                    "mail": "lisa.weydts@jongerenwelzijn.be",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-12-20",
+                    "relation": "OCJ consulente ",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 7034119,
+                    "firstName": "Dr Ilse",
+                    "lastName": "Stragier",
+                    "telephone": "056/532575",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2023-01-11",
+                    "relation": "dermatologe",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 3183868,
+                    "firstName": "Veerle",
+                    "lastName": "Vanweehaeghe",
+                    "telephone": "0477/27.63.01",
+                    "type": "1",
+                    "relation": "Thuis"
+                },
+                {
+                    "id": 3233859,
+                    "firstName": "Bjorn",
+                    "lastName": "Alliet",
+                    "telephone": "0474/34 91 47 oud / 0492/085 207 nieuw",
+                    "mail": "bjorn_veerle@hotmail.com",
+                    "type": "1",
+                    "date": "2020-12-22",
+                    "relation": "Thuis",
+                    "observations": "TELEPHONE: 0479/48.68.19",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 7008070,
+                    "firstName": "Pieter",
+                    "lastName": "De Meulder",
+                    "telephone": "056/255942",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-12-13",
+                    "relation": "huisarts",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 7024878,
+                    "firstName": "arts (naam?)",
+                    "lastName": "dienst infectieziektebestrijding",
+                    "gsm": "0471673987",
+                    "type": "4",
+                    "actor": "13",
+                    "date": "2022-12-23",
+                    "relation": "arts",
+                    "country": {
+                        "id": 49,
+                        "code": "BEL",
+                        "name": "België"
+                    }
+                },
+                {
+                    "id": 3144064,
+                    "telephone": "056/22.01.56",
+                    "type": "1",
+                    "relation": "Thuis",
+                    "observations": "TELEPHONE: 056/22.01.56"
+                }
+            ],
+            "isInEmployeesGroup": false
+        },
+        "annotations": [],
+        "conclusions": [],
+        "anamneses": [],
+        "regItemResources": {
+            "ATTEST_CHANGE": {
+                "type": "ATTEST_CHANGE",
+                "id": 236611817,
+                "state": "CREATED",
+                "activityRegistrationId": 43255218,
+                "themeCodes": [
+                    "2.2.3"
+                ],
+                "visibleFields": {},
+                "enabledFields": {}
+            }
+        },
+        "startedFromDraft": false,
+        "studentOtherActors": [],
+        "medical": false,
+        "absent": false,
+        "covidIndex": false,
+        "relatedReferralRegItemIds": []
+    },
+    "firstStudentSex": "MALE",
+    "newActivity": false,
+    "mainActorDescription": "GEEN ACTOR"
+}

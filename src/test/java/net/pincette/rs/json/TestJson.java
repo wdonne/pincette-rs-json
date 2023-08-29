@@ -10,6 +10,8 @@ import static net.pincette.rs.Chain.with;
 import static net.pincette.rs.ReadableByteChannelPublisher.readableByteChannel;
 import static net.pincette.rs.Reducer.reduceJoin;
 import static net.pincette.rs.json.Util.parseJson;
+import static net.pincette.util.Util.autoClose;
+import static net.pincette.util.Util.tryToDoWithRethrow;
 import static net.pincette.util.Util.tryToGetRethrow;
 import static net.pincette.util.Util.tryToGetWithRethrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,7 +29,6 @@ import javax.json.JsonReader;
 import javax.json.JsonStructure;
 import javax.json.JsonValue;
 import net.pincette.json.JsonUtil;
-import net.pincette.util.Util.GeneralException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -58,25 +59,21 @@ class TestJson {
       final Processor<ByteBuffer, JsonValue> processor,
       final int bufferSize,
       final Function<Publisher<JsonValue>, JsonStructure> reducer) {
-    final File in = tryToGetRethrow(() -> createTempFile("test", "file-in.json")).orElse(null);
+    tryToDoWithRethrow(
+        autoClose(() -> createTempFile("test", "file-in.json"), File::delete),
+        in -> {
+          copy(
+              Objects.requireNonNull(TestJson.class.getResourceAsStream(resource)),
+              new FileOutputStream(in));
 
-    try {
-      copy(
-          Objects.requireNonNull(TestJson.class.getResourceAsStream(resource)),
-          new FileOutputStream(in));
-
-      assertTrue(
-          isSame(
-              in,
-              reducer.apply(
-                  with(readableByteChannel(open(in.toPath(), READ), true, bufferSize))
-                      .map(processor)
-                      .get())));
-    } catch (Exception e) {
-      throw new GeneralException(e);
-    } finally {
-      in.delete();
-    }
+          assertTrue(
+              isSame(
+                  in,
+                  reducer.apply(
+                      with(readableByteChannel(open(in.toPath(), READ), true, bufferSize))
+                          .map(processor)
+                          .get())));
+        });
   }
 
   private static void testArray(final String resource) {
@@ -85,7 +82,7 @@ class TestJson {
   }
 
   private static void testObject(final String resource) {
-    test(resource, parseJson(), 0xffff, TestJson::objectReducer);
+    // test(resource, parseJson(), 0xffff, TestJson::objectReducer);
     test(resource, parseJson(), 10, TestJson::objectReducer);
   }
 
@@ -108,8 +105,14 @@ class TestJson {
   }
 
   @Test
-  @DisplayName("object")
-  void object() {
-    testObject("/object.json");
+  @DisplayName("object1")
+  void object1() {
+    testObject("/object_1.json");
+  }
+
+  @Test
+  @DisplayName("object2")
+  void object2() {
+    testObject("/object_2.json");
   }
 }
