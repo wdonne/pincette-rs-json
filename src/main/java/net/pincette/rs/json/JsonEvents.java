@@ -7,7 +7,6 @@ import static javax.json.stream.JsonParser.Event.VALUE_NUMBER;
 import static javax.json.stream.JsonParser.Event.VALUE_STRING;
 import static javax.json.stream.JsonParser.Event.VALUE_TRUE;
 import static net.pincette.json.JsonUtil.createValue;
-import static net.pincette.rs.Serializer.dispatch;
 import static net.pincette.util.Pair.pair;
 import static net.pincette.util.Util.tryToDo;
 import static net.pincette.util.Util.tryToGetRethrow;
