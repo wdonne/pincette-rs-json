@@ -82,7 +82,7 @@ class TestJson {
   }
 
   private static void testObject(final String resource) {
-    // test(resource, parseJson(), 0xffff, TestJson::objectReducer);
+    test(resource, parseJson(), 0xffff, TestJson::objectReducer);
     test(resource, parseJson(), 10, TestJson::objectReducer);
   }
 
@@ -114,5 +114,11 @@ class TestJson {
   @DisplayName("object2")
   void object2() {
     testObject("/object_2.json");
+  }
+
+  @Test
+  @DisplayName("object3")
+  void object3() {
+    testObject("/object_3.json");
   }
 }

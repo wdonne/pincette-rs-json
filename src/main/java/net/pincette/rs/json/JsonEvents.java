@@ -64,12 +64,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
     if (buffer.hasRemaining()) {
       final byte[] array = array(buffer);
 
-      tryToDo(
-          () -> {
-            jackson.feedInput(array, 0, array.length);
-            emit();
-          },
-          subscriber::onError);
+      tryToDo(() -> jackson.feedInput(array, 0, array.length), subscriber::onError);
 
       return buffer.hasRemaining();
     }

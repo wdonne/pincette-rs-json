@@ -20,7 +20,7 @@ import net.pincette.util.Pair;
  * This processor builds JSON values from a stream of JSON events. If the stream is a JSON array,
  * then the values in it will be emitted. Otherwise, an individual object is emitted.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  */
 public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue> {
   private final Deque<Event> stack = new LinkedList<>();
@@ -133,8 +133,7 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
   private void write(final Pair<Event, JsonValue> event) {
     if (generator != null) {
       switch (event.first) {
-        case END_ARRAY:
-        case END_OBJECT:
+        case END_ARRAY, END_OBJECT:
           generator.writeEnd();
           break;
         case KEY_NAME:
@@ -152,8 +151,7 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
         case VALUE_NULL:
           generator.writeNull();
           break;
-        case VALUE_NUMBER:
-        case VALUE_STRING:
+        case VALUE_NUMBER, VALUE_STRING:
           generator.write(event.second);
           break;
         case VALUE_TRUE:
