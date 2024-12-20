@@ -2,6 +2,7 @@ package net.pincette.rs.json;
 
 import static java.io.File.createTempFile;
 import static java.nio.channels.FileChannel.open;
+import static java.nio.file.Files.delete;
 import static java.nio.file.StandardOpenOption.READ;
 import static net.pincette.io.StreamConnector.copy;
 import static net.pincette.json.JsonUtil.createDiff;
@@ -60,7 +61,7 @@ class TestJson {
       final int bufferSize,
       final Function<Publisher<JsonValue>, JsonStructure> reducer) {
     tryToDoWithRethrow(
-        autoClose(() -> createTempFile("test", "file-in.json"), File::delete),
+        autoClose(() -> createTempFile("test", "file-in.json"), file -> delete(file.toPath())),
         in -> {
           copy(
               Objects.requireNonNull(TestJson.class.getResourceAsStream(resource)),

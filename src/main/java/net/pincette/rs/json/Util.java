@@ -22,7 +22,7 @@ import net.pincette.rs.Mapper;
 /**
  * Reactive JSON utilities.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  */
 public class Util {
   private Util() {}

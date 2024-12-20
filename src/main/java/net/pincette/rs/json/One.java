@@ -17,7 +17,7 @@ import net.pincette.util.Pair;
 /**
  * This processor completes when it has seen either one JSON object or one JSON array.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  */
 public class One extends ProcessorBase<Pair<Event, JsonValue>, Pair<Event, JsonValue>> {
   private final Deque<Event> stack = new LinkedList<>();
