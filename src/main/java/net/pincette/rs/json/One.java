@@ -33,12 +33,6 @@ public class One extends ProcessorBase<Pair<Event, JsonValue>, Pair<Event, JsonV
   }
 
   @Override
-  public void onComplete() {
-    completed = true;
-    super.onComplete();
-  }
-
-  @Override
   public void onNext(final Pair<Event, JsonValue> event) {
     if (event.first == START_ARRAY || event.first == START_OBJECT) {
       stack.push(event.first);
@@ -53,7 +47,8 @@ public class One extends ProcessorBase<Pair<Event, JsonValue>, Pair<Event, JsonV
     subscriber.onNext(event);
 
     if (!completed && stack.isEmpty()) {
-      complete();
+      completed = true;
+      subscriber.onComplete();
     }
   }
 }
