@@ -6,7 +6,7 @@
 
   <groupId>net.pincette</groupId>
   <artifactId>pincette-rs-json</artifactId>
-  <version>1.0.23</version>
+  <version>1.0.24</version>
   <packaging>jar</packaging>
   <name>pincette-rs-json</name>
   <description>Reactive Streams JSON Parser</description>
@@ -72,12 +72,12 @@
     <dependency>
       <groupId>net.pincette</groupId>
       <artifactId>pincette-rs</artifactId>
-      <version>3.11.0</version>
+      <version>3.11.2</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.13.4</version>
+      <version>5.14.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -123,7 +123,7 @@
             </additionalJOption>
           </additionalJOptions>
           <links>
-            <link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
+            <link>https://docs.oracle.com/en/java/javase/21/docs/api/</link>
             <link>https://www.javadoc.io/doc/net.pincette/pincette-common/latest/</link>
             <link>https://www.javadoc.io/doc/net.pincette/pincette-rs/latest/</link>
           </links>
