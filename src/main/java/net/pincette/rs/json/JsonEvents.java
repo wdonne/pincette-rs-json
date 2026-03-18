@@ -81,7 +81,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
   }
 
   private boolean done() {
-    return completed && requested == 0 && buffers.isEmpty() && !jackson.needMoreInput();
+    return completed && buffers.isEmpty() && !jackson.needMoreInput();
   }
 
   @Override
@@ -112,6 +112,12 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
     }
   }
 
+  private void maybeComplete() {
+    if (done()) {
+      subscriber.onComplete();
+    }
+  }
+
   private void more() {
     if (!completed && requested > 0 && jackson.needMoreInput()) {
       subscription.request(1);
@@ -120,7 +126,12 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
 
   @Override
   public void onComplete() {
-    dispatch(() -> completed = true);
+    dispatch(
+        () -> {
+          completed = true;
+          jackson.endOfInput();
+          maybeComplete();
+        });
   }
 
   @Override
@@ -133,12 +144,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
   }
 
   private void sendComplete() {
-    dispatch(
-        () -> {
-          if (done()) {
-            subscriber.onComplete();
-          }
-        });
+    dispatch(this::maybeComplete);
   }
 
   private JsonValue value(final Event event) {
