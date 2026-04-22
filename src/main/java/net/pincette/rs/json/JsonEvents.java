@@ -81,7 +81,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
   }
 
   private boolean done() {
-    return completed && buffers.isEmpty() && !jackson.needMoreInput();
+    return completed && buffers.isEmpty();
   }
 
   @Override
@@ -106,7 +106,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
   private void emitAvailableEvents() {
     Event event;
 
-    while (!jackson.needMoreInput() && requested > 0 && (event = parser.next()) != null) {
+    while (requested > 0 && (event = parser.next()) != null) {
       --requested;
       subscriber.onNext(pair(event, value(event)));
     }
@@ -114,6 +114,7 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
 
   private void maybeComplete() {
     if (done()) {
+      jackson.endOfInput();
       subscriber.onComplete();
     }
   }
@@ -129,7 +130,6 @@ public class JsonEvents extends ProcessorBase<ByteBuffer, Pair<Event, JsonValue>
     dispatch(
         () -> {
           completed = true;
-          jackson.endOfInput();
           maybeComplete();
         });
   }
