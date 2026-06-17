@@ -28,9 +28,11 @@ import net.pincette.util.Pair;
  * @author Werner Donné
  */
 public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue> {
-  private final Deque<Event> stack = new LinkedList<>();
+  private boolean allSent;
+  private boolean completed;
   private JsonBuilderGenerator generator = new JsonBuilderGenerator();
   private long requested;
+  private final Deque<Event> stack = new LinkedList<>();
 
   private static boolean isStart(final Pair<Event, JsonValue> event) {
     return event.first == START_ARRAY || event.first == START_OBJECT;
@@ -48,6 +50,10 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
     return new JsonValues();
   }
 
+  private boolean done() {
+    return stack.isEmpty();
+  }
+
   @Override
   protected void emit(final long number) {
     dispatch(
@@ -63,6 +69,14 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
           --requested;
           reset();
           subscriber.onNext(value);
+
+          if (done()) {
+            if (completed) {
+              sendComplete();
+            } else {
+              allSent = true;
+            }
+          }
         });
   }
 
@@ -72,6 +86,8 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
     } else {
       if (!isOuterArrayEnd(event.first)) {
         write(event);
+      } else {
+        allSent = true;
       }
 
       if (isEndInOuterArray()) {
@@ -92,6 +108,10 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
     }
   }
 
+  private boolean isCompleted() {
+    return completed && allSent;
+  }
+
   private boolean isEndInOuterArray() {
     return stack.size() == 1 && stack.peek() == START_ARRAY;
   }
@@ -109,35 +129,49 @@ public class JsonValues extends ProcessorBase<Pair<Event, JsonValue>, JsonValue>
   }
 
   private void more() {
-    if (requested > 0 && !completed() && !cancelled() && !getError()) {
+    if (requested > 0 && !isCompleted() && !cancelled() && !getError()) {
       subscription.request(1);
     }
   }
 
   @Override
   public void onComplete() {
-    dispatch(super::onComplete);
+    dispatch(
+        () -> {
+          completed = true;
+
+          if (allSent) {
+            sendComplete();
+          }
+        });
   }
 
   @Override
   public void onNext(final Pair<Event, JsonValue> event) {
-    if (isStart(event)) {
-      start(event);
-    } else if (event.first == END_ARRAY) {
-      endArray(event);
-    } else if (event.first == END_OBJECT) {
-      endObject(event);
-    } else if (isScalarInOuterArray(event.first)) {
-      emit(event.second);
-    } else {
-      write(event);
-    }
+    dispatch(
+        () -> {
+          if (isStart(event)) {
+            start(event);
+          } else if (event.first == END_ARRAY) {
+            endArray(event);
+          } else if (event.first == END_OBJECT) {
+            endObject(event);
+          } else if (isScalarInOuterArray(event.first)) {
+            emit(event.second);
+          } else {
+            write(event);
+          }
 
-    dispatch(this::more);
+          dispatch(this::more);
+        });
   }
 
   private void reset() {
     generator = new JsonBuilderGenerator();
+  }
+
+  private void sendComplete() {
+    subscriber.onComplete();
   }
 
   private void start(final Pair<Event, JsonValue> event) {

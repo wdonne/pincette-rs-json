@@ -49,25 +49,43 @@ public class One extends ProcessorBase<Pair<Event, JsonValue>, Pair<Event, JsonV
   public void onNext(final Pair<Event, JsonValue> event) {
     dispatch(
         () -> {
-          if (event.first == START_ARRAY || event.first == START_OBJECT) {
-            stack.push(event.first);
-          } else if (event.first == END_ARRAY) {
-            if (stack.pop() != START_ARRAY) {
-              subscriber.onError(new JsonException("No matching START_ARRAY for END_ARRAY."));
-            }
-          } else if (event.first == END_OBJECT && stack.pop() != START_OBJECT) {
-            subscriber.onError(new JsonException("No matching START_OBJECT for END_OBJECT."));
-          }
+          if (processEvent(event.first)) {
+            subscriber.onNext(event);
 
-          subscriber.onNext(event);
+            if (stack.isEmpty()) {
+              done = true;
 
-          if (stack.isEmpty()) {
-            done = true;
-
-            if (completed) {
-              subscriber.onComplete();
+              if (completed) {
+                subscriber.onComplete();
+              }
             }
           }
         });
+  }
+
+  private boolean processEvent(final Event event) {
+    if (event == START_ARRAY || event == START_OBJECT) {
+      stack.push(event);
+
+      return true;
+    }
+
+    if (event == END_ARRAY) {
+      if (stack.pop() != START_ARRAY) {
+        subscriber.onError(new JsonException("No matching START_ARRAY for END_ARRAY."));
+
+        return false;
+      }
+
+      return true;
+    }
+
+    if (event == END_OBJECT && stack.pop() != START_OBJECT) {
+      subscriber.onError(new JsonException("No matching START_OBJECT for END_OBJECT."));
+
+      return false;
+    }
+
+    return true;
   }
 }

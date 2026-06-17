@@ -10,6 +10,7 @@ import static net.pincette.json.JsonUtil.createReader;
 import static net.pincette.rs.Chain.with;
 import static net.pincette.rs.ReadableByteChannelPublisher.readableByteChannel;
 import static net.pincette.rs.Reducer.reduceJoin;
+import static net.pincette.rs.Util.asValue;
 import static net.pincette.rs.json.Util.parseJson;
 import static net.pincette.util.Util.autoClose;
 import static net.pincette.util.Util.tryToDoWithRethrow;
@@ -25,6 +26,7 @@ import java.util.Objects;
 import java.util.concurrent.Flow.Processor;
 import java.util.concurrent.Flow.Publisher;
 import java.util.function.Function;
+import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonReader;
 import javax.json.JsonStructure;
@@ -40,15 +42,21 @@ class TestJson {
 
   private static boolean isSame(final File original, final JsonStructure generated) {
     return tryToGetWithRethrow(() -> read(original), JsonReader::read)
-        .map(json -> createDiff(json, generated).toJsonArray().isEmpty())
+        .map(
+            json -> {
+              final JsonArray diff = createDiff(json, generated).toJsonArray();
+
+              if (!diff.isEmpty()) {
+                System.out.println(generated);
+              }
+
+              return diff.isEmpty();
+            })
         .orElse(false);
   }
 
   private static JsonStructure objectReducer(final Publisher<JsonValue> publisher) {
-    return reduceJoin(
-        with(publisher).filter(JsonUtil::isObject).map(JsonValue::asJsonObject).get(),
-        JsonUtil::emptyObject,
-        (i, o) -> o);
+    return asValue(publisher).asJsonObject();
   }
 
   private static JsonReader read(final File json) {
@@ -100,6 +108,12 @@ class TestJson {
   }
 
   @Test
+  @DisplayName("array3")
+  void array3() {
+    testArray("/array_3.json");
+  }
+
+  @Test
   @DisplayName("array values")
   void arrayValues() {
     testArray("/array_values.json");
@@ -121,5 +135,11 @@ class TestJson {
   @DisplayName("object3")
   void object3() {
     testObject("/object_3.json");
+  }
+
+  @Test
+  @DisplayName("object4")
+  void object4() {
+    testObject("/object_4.json");
   }
 }
